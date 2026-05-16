@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { fetchGitHubStats } from "@/lib/github";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const stats = await fetchGitHubStats();
   return NextResponse.json(stats, {

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowDown,
@@ -17,6 +19,7 @@ type HeroProps = {
 };
 
 export default function Hero({ stats }: HeroProps) {
+  const [profileImageFailed, setProfileImageFailed] = useState(false);
   const heroStats = [
     ["Repos", stats.totals.repos],
     ["Stars", stats.totals.stars],
@@ -131,14 +134,17 @@ export default function Hero({ stats }: HeroProps) {
               className="relative mx-auto aspect-square w-72 overflow-hidden rounded-full border border-primary/50 bg-background shadow-glow md:w-80"
             >
               <div className="absolute inset-[-8px] animate-pulseGlow rounded-full bg-primary/25 blur-2xl" />
-              <img
-                src="/profile.jpg"
-                alt="Crispin Theophane"
-                className="relative z-10 h-full w-full rounded-full object-cover"
-                onError={(event) => {
-                  event.currentTarget.style.display = "none";
-                }}
-              />
+              {!profileImageFailed ? (
+                <Image
+                  src="/profile.jpg"
+                  alt="Crispin Theophane"
+                  fill
+                  priority
+                  sizes="(min-width: 768px) 320px, 288px"
+                  className="relative z-10 rounded-full object-cover"
+                  onError={() => setProfileImageFailed(true)}
+                />
+              ) : null}
               <div className="profile-orb absolute inset-0 grid place-items-center rounded-full text-7xl font-bold text-background">
                 CT
               </div>

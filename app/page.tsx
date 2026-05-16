@@ -18,6 +18,8 @@ import Skills from "@/components/Skills";
 import { Button } from "@/components/ui/button";
 import { fetchGitHubStats } from "@/lib/github";
 
+export const dynamic = "force-dynamic";
+
 const navItems = [
   ["About", "#about"],
   ["Experience", "#experience"],

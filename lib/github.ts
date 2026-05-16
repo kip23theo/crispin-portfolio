@@ -32,12 +32,17 @@ async function githubGraphQL<T>(
     return null;
   }
 
-  const response = await fetch(GITHUB_GRAPHQL, {
-    method: "POST",
-    headers: graphqlHeaders,
-    body: JSON.stringify({ query, variables }),
-    next: { revalidate: 900 }
-  });
+  let response: Response;
+  try {
+    response = await fetch(GITHUB_GRAPHQL, {
+      method: "POST",
+      headers: graphqlHeaders,
+      body: JSON.stringify({ query, variables }),
+      next: { revalidate: 900 }
+    });
+  } catch {
+    return null;
+  }
 
   if (!response.ok) {
     return null;
@@ -56,10 +61,15 @@ async function githubGraphQL<T>(
 }
 
 async function githubREST<T>(path: string): Promise<T | null> {
-  const response = await fetch(`${GITHUB_API}${path}`, {
-    headers: restHeaders,
-    next: { revalidate: 900 }
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${GITHUB_API}${path}`, {
+      headers: restHeaders,
+      next: { revalidate: 900 }
+    });
+  } catch {
+    return null;
+  }
 
   if (!response.ok) {
     return null;

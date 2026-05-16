@@ -53,9 +53,29 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)"
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"]
+        sans: [
+          "Inter",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif"
+        ],
+        display: [
+          "Space Grotesk",
+          "Inter",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif"
+        ],
+        mono: [
+          "JetBrains Mono",
+          "SFMono-Regular",
+          "Consolas",
+          "Liberation Mono",
+          "monospace"
+        ]
       },
       boxShadow: {
         glow: "0 0 60px rgba(56, 189, 248, 0.22)",
