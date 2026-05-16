@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 5%;
+  --foreground: 198 100% 96%;
+  --card: 222 44% 8%;
+  --card-foreground: 198 100% 96%;
+  --popover: 222 44% 8%;
+  --popover-foreground: 198 100% 96%;
+  --primary: 189 100% 54%;
+  --primary-foreground: 222 47% 6%;
+  --secondary: 214 38% 14%;
+  --secondary-foreground: 198 100% 92%;
+  --muted: 216 32% 17%;
+  --muted-foreground: 204 24% 72%;
+  --accent: 164 75% 52%;
+  --accent-foreground: 222 47% 6%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 198 100% 86% / 0.16;
+  --input: 198 100% 86% / 0.18;
+  --ring: 189 100% 54%;
+  --radius: 0.5rem;
+  --font-sans: "Inter";
+  --font-display: "Space Grotesk";
+  --font-mono: "JetBrains Mono";
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+  background: hsl(var(--background));
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(14, 165, 233, 0.18), transparent 28rem),
+    radial-gradient(circle at 88% 12%, rgba(16, 185, 129, 0.13), transparent 26rem),
+    radial-gradient(circle at 50% 92%, rgba(99, 102, 241, 0.10), transparent 28rem),
+    hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(125, 211, 252, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 211, 252, 0.045) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent 82%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.025),
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.18;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.32);
+}
+
+.section-shell {
+  @apply container py-20 md:py-28;
+}
+
+.section-kicker {
+  @apply mb-3 inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.24em] text-primary/80;
+}
+
+.section-title {
+  @apply font-display text-3xl font-bold tracking-tight text-foreground md:text-5xl;
+}
+
+.section-copy {
+  @apply mt-4 max-w-3xl text-base leading-8 text-muted-foreground md:text-lg;
+}
+
+.glass-panel {
+  @apply border border-border bg-card/55 shadow-panel backdrop-blur-xl;
+}
+
+.noise-mask {
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 38%),
+    radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.16), transparent 22rem);
+}
+
+.profile-orb {
+  background:
+    linear-gradient(135deg, rgba(34, 211, 238, 0.95), rgba(16, 185, 129, 0.95)),
+    radial-gradient(circle at 30% 20%, white, transparent 26%);
+}
